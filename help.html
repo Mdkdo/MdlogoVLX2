@@ -274,6 +274,7 @@
             <a href="#variables"><span class="icon">📦</span> Variables & Tableaux</a>
             <a href="#controle"><span class="icon">🔄</span> Contrôle & Boucles</a>
             <a href="#proced"><span class="icon">🏗️</span> Procédures & Classes</a>
+            <a href="#exemples_pratiques"><span class="icon">🌟</span> Exemples Pratiques</a>
         </div>
         <div class="back-btn-container">
             <a href="index.html" class="back-btn">← Retour à l'Éditeur</a>
@@ -571,6 +572,242 @@
                             <tr><td><strong>Méthode</strong></td><td><code>nomMethode [ ... ]</code></td><td><code>setX [ DONNE this.x 10 ]</code></td></tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+
+            <section id="exemples_pratiques">
+                <h2><span class="icon">🌟</span> Exemples Pratiques</h2>
+
+                <div class="card">
+                    <h3>1. La Fleur Géométrique</h3>
+                    <p>Cet exemple utilise des boucles imbriquées pour créer une forme complexe à partir de simples cercles.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Fleur</div>
+                        <pre class="example"><span class="command">VE</span> <span class="comment">// Efface l'écran</span>
+<span class="command">FTC</span> 2 <span class="comment">// Épaisseur du trait</span>
+<span class="command">FCC</span> "violet" <span class="comment">// Couleur du trait</span>
+<span class="keyword">REPETE</span> 12 [
+  <span class="command">CERCLE</span> 60 <span class="comment">// Dessine un cercle de rayon 60</span>
+  <span class="command">TD</span> 30 <span class="comment">// Tourne de 30 degrés pour le prochain pétale</span>
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>2. Carré Rempli Dynamique</h3>
+                    <p>Apprenez à utiliser les couleurs de remplissage et la commande REMPLIS pour colorer vos formes.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Carré Coloré</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="command">FCC</span> "noir"
+<span class="command">FCB</span> "orange" <span class="comment">// Définit la couleur de remplissage</span>
+<span class="keyword">REPETE</span> 4 [
+  <span class="command">AV</span> 100
+  <span class="command">TD</span> 90
+]
+<span class="command">REMPLIS</span> <span class="comment">// Remplit la zone fermée tracée</span></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>3. Spirale Mathématique</h3>
+                    <p>Une spirale créée en augmentant progressivement la distance parcourue à chaque étape grâce à une variable.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Spirale</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="keyword">DONNE</span> <span class="variable">:cote</span> 10 <span class="comment">// Initialise la longueur du côté</span>
+<span class="keyword">REPETE</span> 50 [
+  <span class="command">AV</span> <span class="variable">:cote</span>
+  <span class="command">TD</span> 91 <span class="comment">// Un angle légèrement supérieur à 90 crée la spirale</span>
+  <span class="keyword">DONNE</span> <span class="variable">:cote</span> <span class="variable">:cote</span> + 5 <span class="comment">// Augmente la longueur à chaque tour</span>
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>4. Arbre Récursif</h3>
+                    <p>La récursivité permet de créer des structures fractales comme des arbres de manière très concise.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Arbre Fractal</div>
+                        <pre class="example"><span class="keyword">POUR</span> ARBRE <span class="variable">:t</span>
+  <span class="keyword">SI</span> :t < 5 [ <span class="keyword">STOP</span> ] <span class="comment">// Condition d'arrêt</span>
+  <span class="command">AV</span> <span class="variable">:t</span> <span class="comment">// Trace le tronc</span>
+  <span class="command">TG</span> 30 ARBRE :t * 0.7 <span class="comment">// Branche gauche</span>
+  <span class="command">TD</span> 60 ARBRE :t * 0.7 <span class="comment">// Branche droite</span>
+  <span class="command">TG</span> 30 <span class="command">RE</span> <span class="variable">:t</span> <span class="comment">// Revient à la base</span>
+<span class="keyword">FIN</span>
+
+<span class="command">VE</span> <span class="command">LC</span> <span class="command">FPOS</span> 0 -200 <span class="command">BC</span>
+ARBRE 100 <span class="comment">// Lance la génération</span></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>5. Gestion des Tableaux de Données</h3>
+                    <p>Exemple complet de manipulation de listes : ajout, modification et affichage de données.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Gestion de Liste</div>
+                        <pre class="example"><span class="keyword">DONNE</span> <span class="variable">:notes</span> <span class="command">TABLEAU</span> <span class="comment">// Crée un tableau vide</span>
+<span class="command">TAB_AJOUTE</span> <span class="variable">:notes</span> 15
+<span class="command">TAB_AJOUTE</span> <span class="variable">:notes</span> 18
+<span class="command">TAB_AJOUTE</span> <span class="variable">:notes</span> 12
+
+<span class="comment">// Modifie la première note</span>
+<span class="command">TAB_MODIFIE</span> <span class="variable">:notes</span> 0 20
+
+<span class="command">LOG</span> "Liste des notes : " + <span class="command">TAB_TEXTE</span> <span class="variable">:notes</span>
+<span class="command">LOG</span> "Nombre de notes : " + <span class="command">TAB_TAILLE</span> <span class="variable">:notes</span></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>6. Polygone avec couleurs dégradées</h3>
+                    <p>Cet exemple montre comment changer la couleur du trait dynamiquement à l'intérieur d'une boucle.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Polygone Arc-en-ciel</div>
+                        <pre class="example"><span class="command">VE</span> <span class="command">FTC</span> 5
+<span class="keyword">REPETE</span> 36 [
+  <span class="command">FCC</span> <span class="command">RVB</span> (_i0 * 7) 100 200 <span class="comment">// La couleur change à chaque pas</span>
+  <span class="command">AV</span> 20
+  <span class="command">TD</span> 10
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>7. Dessin de texte circulaire</h3>
+                    <p>On peut combiner les mouvements de la tortue et l'écriture pour placer du texte de manière artistique.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Texte en Cercle</div>
+                        <pre class="example"><span class="command">VE</span> <span class="command">POLICE_TAILLE</span> 20
+<span class="keyword">REPETE</span> 12 [
+  <span class="command">LC</span> <span class="command">AV</span> 100 <span class="command">BC</span>
+  <span class="command">ECRIS</span> "LOGO"
+  <span class="command">LC</span> <span class="command">RE</span> 100 <span class="command">BC</span>
+  <span class="command">TD</span> 30
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>8. Utilisation d'une Classe Point</h3>
+                    <p>La programmation orientée objet permet de créer des structures de données réutilisables avec leurs propres comportements.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Classe et Objet</div>
+                        <pre class="example"><span class="keyword">CLASSE</span> MonDessin [
+  constructeur [
+    <span class="keyword">DONNE</span> <span class="variable">this.c</span> "rouge"
+  ]
+
+  tracer [
+    <span class="command">FCC</span> <span class="variable">this.c</span>
+    <span class="keyword">REPETE</span> 3 [ <span class="command">AV</span> 50 <span class="command">TD</span> 120 ]
+  ]
+]
+
+<span class="keyword">DONNE</span> <span class="variable">:d</span> <span class="keyword">new</span> MonDessin()
+<span class="variable">:d</span>.tracer()</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>9. Calculatrice Interactive</h3>
+                    <p>Utilisez LIS pour demander des nombres à l'utilisateur et effectuez des calculs mathématiques.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Somme de deux nombres</div>
+                        <pre class="example"><span class="keyword">DONNE</span> <span class="variable">:a</span> <span class="command">_NOMBRE</span> <span class="command">LIS</span> "Premier nombre ?"
+<span class="keyword">DONNE</span> <span class="variable">:b</span> <span class="command">_NOMBRE</span> <span class="command">LIS</span> "Deuxième nombre ?"
+<span class="keyword">DONNE</span> <span class="variable">:somme</span> <span class="variable">:a</span> + <span class="variable">:b</span>
+<span class="command">MSG</span> "Le résultat est : " + <span class="variable">:somme</span></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>10. Grille de pixels</h3>
+                    <p>La commande PIXEL permet de dessiner point par point, idéal pour des motifs de bas niveau.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Damier de pixels</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="keyword">REPETE</span> 20 [
+  <span class="keyword">DONNE</span> <span class="variable">:x</span> _i0 * 5
+  <span class="keyword">REPETE</span> 20 [
+    <span class="keyword">DONNE</span> <span class="variable">:y</span> _i1 * 5
+    <span class="keyword">SI</span> ((_i0 + _i1) % 2 == 0) [
+      <span class="command">PIXEL</span> <span class="variable">:x</span> <span class="variable">:y</span> "noir"
+    ]
+  ]
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>11. Couronne de Polygones</h3>
+                    <p>En imbriquant des boucles, on peut créer des motifs répétitifs complexes. Ici, nous dessinons une série d'hexagones disposés en cercle.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Couronne Hexagonale</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="keyword">REPETE</span> 12 [
+  <span class="keyword">REPETE</span> 6 [ <span class="command">AV</span> 40 <span class="command">TD</span> 60 ] <span class="comment">// Dessine un hexagone</span>
+  <span class="command">LC</span> <span class="command">AV</span> 60 <span class="command">BC</span> <span class="comment">// Avance sans dessiner</span>
+  <span class="command">TD</span> 30 <span class="comment">// Pivote pour le prochain hexagone</span>
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>12. Analyse de Texte</h3>
+                    <p>Utilisez les fonctions de conversion et les tableaux pour traiter des chaînes de caractères complexes.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Split et Affichage</div>
+                        <pre class="example"><span class="keyword">DONNE</span> <span class="variable">:phrase</span> "Logo,Dessin,Code,Art"
+<span class="keyword">DONNE</span> <span class="variable">:mots</span> <span class="command">_S_TABLEAU</span> <span class="variable">:phrase</span> <span class="comment">// Sépare par les virgules</span>
+
+<span class="keyword">REPETE</span> <span class="command">TAB_TAILLE</span> <span class="variable">:mots</span> [
+  <span class="command">LOG</span> "Mot " + _i0 + " : " + <span class="command">TAB_LIS</span> <span class="variable">:mots</span> _i0
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>13. Art Abstrait Aléatoire</h3>
+                    <p>La commande HASARD permet de générer des dessins imprévisibles. Chaque exécution donnera un résultat unique.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Art Aléatoire</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="keyword">REPETE</span> 20 [
+  <span class="command">FCC</span> <span class="command">RVB</span> (<span class="command">HASARD</span> 255) (<span class="command">HASARD</span> 255) (<span class="command">HASARD</span> 255)
+  <span class="command">FPOS</span> (<span class="command">HASARD</span> 400) - 200, (<span class="command">HASARD</span> 400) - 200
+  <span class="command">ETOILE</span> 5, (<span class="command">HASARD</span> 50), (<span class="command">HASARD</span> 20)
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>14. Animation de Cap (Orientation)</h3>
+                    <p>Ce script montre comment la tortue peut s'orienter vers des points spécifiques du canevas de manière dynamique.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Orientation Dynamique</div>
+                        <pre class="example"><span class="command">VE</span>
+<span class="command">FPOS</span> -100 -100
+<span class="keyword">REPETE</span> 4 [
+  <span class="command">AV</span> 200
+  <span class="command">LOG</span> "Angle actuel : " + <span class="command">CAP</span>
+  <span class="command">TD</span> 90
+]</pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>15. Fonctions Mathématiques Avancées</h3>
+                    <p>Visualisation d'une fonction mathématique simple. Ici, nous utilisons SIN pour influencer le mouvement de la tortue.</p>
+                    <div class="example-block">
+                        <div class="example-header">Code : Onde Sinusoïdale</div>
+                        <pre class="example"><span class="command">VE</span> <span class="command">LC</span> <span class="command">FPOS</span> -200 0 <span class="command">BC</span>
+<span class="keyword">REPETE</span> 40 [
+  <span class="keyword">DONNE</span> <span class="variable">:y</span> (<span class="command">SIN</span> (_i0 * 18)) * 50 <span class="comment">// Calcule l'ordonnée</span>
+  <span class="command">FPOS</span> (-200 + (_i0 * 10)) <span class="variable">:y</span>
+]</pre>
+                    </div>
                 </div>
             </section>
         </div>
