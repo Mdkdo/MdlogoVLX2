@@ -30,8 +30,8 @@
     };
 
     function tokenize(input) {
-        // Updated regex to support quoted strings "..." and multi-char operators
-        return input.split(/(\s+|"(?:[^"\\]|\\.)*"|[\[\]{}();,]|\+\+|--|\+=|-=|\*=|\/=|===|!==|==|!=|<=|>=|=|\+|-|\*|\/|%|>|<|!|\^)/).filter(t => t.length > 0);
+        // Updated regex to support comments, quoted strings "..." and multi-char operators
+        return input.split(/(\/\/.*|\/\*[\s\S]*?\*\/|\s+|"(?:[^"\\]|\\.)*"|[\[\]{}();,]|\+\+|--|\+=|-=|\*=|\/=|===|!==|==|!=|<=|>=|=|\+|-|\*|\/|%|>|<|!|\^)/).filter(t => t.length > 0);
     }
 
     function isBinaryOperator(token) {
@@ -276,6 +276,10 @@
                 }
             }
 
+            if (trimmed.startsWith('//') || trimmed.startsWith('/*')) {
+                output += trimmed + (trimmed.startsWith('//') ? "\n" : "");
+                continue;
+            }
             if (upper === 'RENDS' || upper === 'RETURN') { output += "return "; continue; }
             if (upper === 'STOP' || upper === 'BREAK') { output += "break; "; continue; }
             if (upper === 'CONTINUE') { output += "continue; "; continue; }
@@ -300,7 +304,10 @@
 
     function transpileOneCommand(tokens, startIndex, fullArityMap, userProcs) {
         let i = startIndex; 
-        while (i < tokens.length && (tokens[i].trim() === "" || tokens[i] === ",")) i++;
+        while (i < tokens.length && (tokens[i].trim() === "" || tokens[i] === "," || tokens[i].trim().startsWith('//') || tokens[i].trim().startsWith('/*'))) {
+            // Skip comments when looking for arguments, but they might be preserved in translateBlocks
+            i++;
+        }
         if (i >= tokens.length) return { js: "", nextIdx: i };
         let token = tokens[i].trim(); let upper = token.toUpperCase(); let arity = fullArityMap[upper];
         let resultJS = ""; let currentIdx = i;
